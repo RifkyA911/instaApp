@@ -18,7 +18,7 @@ class Post extends Model
         'user_id', // Pastikan user_id ada di fillable jika kamu menggunakannya
         'title',
         'content',
-        // ... atribut lain
+        'image_path'
     ];
 
     /**
