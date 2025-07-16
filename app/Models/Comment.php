@@ -12,6 +12,7 @@ class Comment extends Model
     protected $fillable = [
         'user_id',
         'post_id',
+        'content'
     ];
 
     public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
