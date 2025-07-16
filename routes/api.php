@@ -12,13 +12,8 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
 
-    Route::apiResource('/posts', PostController::class)->except(['update']);
-    Route::apiResource('/comments', CommentController::class)->only(['index', 'store', 'show', 'update', 'destroy']);
-
-    Route::post('/posts/{post}/like', [LikeController::class, 'store']);
-    Route::delete('/posts/{post}/like', [LikeController::class, 'destroy']);
-
-    Route::get('/posts/{post}/comments', [CommentController::class, 'index']);
-    Route::post('/posts/{post}/comments', [CommentController::class, 'store']);
-    Route::delete('/comments/{comment}', [CommentController::class, 'destroy']);
+    // membuat all route resource routes untuk PostController
+    Route::apiResource('posts', PostController::class);
+    Route::apiResource('posts.likes', LikeController::class);
+    Route::apiResource('posts.comments', CommentController::class);
 });
