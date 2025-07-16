@@ -14,26 +14,17 @@ class Like extends Model
         'post_id',
     ];
 
-    public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    /**
+     * Mendefinisikan relasi many-to-one dengan model User.
+     * Satu Like dimiliki oleh satu Post.
+     */
+    public function post()
+    {
+        return $this->belongsTo(Post::class);
+    }
+
+    public function user()
     {
         return $this->belongsTo(User::class);
-    }
-
-    /**
-     * Mendefinisikan relasi one-to-many dengan model Post.
-     * Satu User bisa memiliki banyak Post.
-     */
-    public function posts(): \Illuminate\Database\Eloquent\Relations\HasMany
-    {
-        return $this->hasMany(Post::class);
-    }
-
-    /**
-     * Mendefinisikan relasi one-to-many dengan model Comment.
-     * Satu Post bisa memiliki banyak Comment.
-     */
-    public function comments(): \Illuminate\Database\Eloquent\Relations\HasMany
-    {
-        return $this->hasMany(Comment::class);
     }
 }
