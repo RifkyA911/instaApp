@@ -1,53 +1,66 @@
 <p align="center">
-  <img src="https://i.ibb.co/4pwyZ2G/insta-app-copycat.png" width="400" alt="Insta App Copycat">
-  <br>
-  <img src="https://img.shields.io/badge/Version-1.0-green" alt="Version">
-  <img src="https://img.shields.io/badge/License-MIT-blue" alt="License">
-  <img src="https://img.shields.io/badge/Laravel-9.32.0-red" alt="Laravel Version">
+  <img src="https://i.ibb.co/4pwyZ2G/insta-app-copycat.png" width="400" alt="Insta App Copycat Logo">
 </p>
 
-## About Insta App Copycat
+<h3 align="center">🚀 Insta App Copycat - Laravel REST API</h3>
 
-Insta App Copycat is a RESTful API built with Laravel framework that mimics the features of Instagram. This API allows you to create, read, update, and delete resources such as users, posts, comments, likes, and followers. The API also includes features such as authentication, authorization, and pagination.
+<p align="center">
+  <img src="https://img.shields.io/badge/Version-1.0-green" alt="Version">
+  <img src="https://img.shields.io/badge/License-MIT-blue" alt="License">
+  <img src="https://img.shields.io/badge/Laravel-12-red" alt="Laravel Version">
+</p>
 
-## Features
+---
 
-### User Management
+## 📸 About Insta App Copycat
 
--   User registration
--   User login
+**Insta App Copycat** is a modern RESTful API built with **Laravel 12** designed to mimic Instagram’s core functionalities.  
+Easily manage **Users**, **Posts**, **Comments**, **Likes**, and **Followers** — all with **authentication**, **authorization**, and **pagination** baked in.
 
-### Post Management
+🎬 **Project demo video:** [Watch on Google Drive](https://drive.google.com/)
 
--   Post creation
--   Post retrieval
--   Post update
--   Post deletion
--   Post like
--   Post unlike
--   Post edit log
+Frontend repo: [instaApp-Frontend](https://github.com/RifkyA911/instaApp-Frontend)
 
-### Comment Management
+---
 
--   Comment creation
--   Comment retrieval
--   Comment update
--   Comment deletion
--   Comment edit log
+## ✨ Features
 
-### Technologies Used
+### 👤 User Management
 
--   Authentication with Laravel Sanctum
+-   User registration & login
+-   Secure authentication with **Laravel Sanctum**
 
-## Routes
+### 📝 Post Management
+
+-   Create, read, update, and delete posts
+-   Like/Unlike posts
+-   Track post edit logs
+
+### 💬 Comment Management
+
+-   Add, edit, delete, and view comments
+-   Comment edit logs
+
+---
+
+## 🛠️ Technologies Used
+
+-   **Laravel 12**
+-   **Sanctum Authentication**
+-   **PostgreSQL**
+-   **Bun & Node.js** for frontend integration
+
+---
+
+## 📡 API Routes
 
 ### User Routes
 
 -   `POST /register` - Register a new user
--   `POST /login` - Login a user
--   `GET /me` - Retrieve the authenticated user
--   `PUT /me` - Update the authenticated user
--   `DELETE /me` - Delete the authenticated user
+-   `POST /login` - Login
+-   `GET /me` - Retrieve authenticated user
+-   `PUT /me` - Update authenticated user
+-   `DELETE /me` - Delete authenticated user
 
 ### Post Routes
 
@@ -62,24 +75,36 @@ Insta App Copycat is a RESTful API built with Laravel framework that mimics the 
 
 ### Comment Routes
 
--   `POST /comments` - Create a new comment
+-   `POST /comments` - Create a comment
 -   `GET /comments` - Retrieve all comments
 -   `GET /comments/{comment}` - Retrieve a single comment
 -   `PUT /comments/{comment}` - Update a comment
 -   `DELETE /comments/{comment}` - Delete a comment
 -   `GET /comments/{comment}/edit-log` - Retrieve the edit log of a comment
 
-## Installation
+---
 
-1. Clone the repository
-2. Run `composer install`
-3. Run `php artisan migrate`
-4. Run `php artisan serve`
+## ⚙️ Installation
 
-## Import Insomnia
+```bash
+# 1. Clone the repository
+git clone https://github.com/yourusername/instaApp-Backend.git
+cd instaApp-Backend
 
-The Insomnia file is located in the `import` folder. To import the file, open Insomnia and click on the `Import` button in the top left corner. Then, select the `import.json` file and click on the `Import` button.
+# 2. Install dependencies
+composer install
 
-## License
+# 3. Run migrations
+php artisan migrate
+
+# 4. Start the server
+php artisan serve
+```
+
+Import Insomnia workspace from `/import/import.json` for testing.
+
+---
+
+## 📜 License
 
 Insta App Copycat is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
