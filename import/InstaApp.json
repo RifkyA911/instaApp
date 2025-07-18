@@ -1,0 +1,645 @@
+type: collection.insomnia.rest/5.0
+name: InstaApp
+meta:
+  id: wrk_1758f130da494c87a7393f9efbeb1098
+  created: 1752671377723
+  modified: 1752671377723
+  description: ""
+collection:
+  - name: Auth
+    meta:
+      id: fld_db9aea19a949442ea1cbfdbf0e71db33
+      created: 1752672454116
+      modified: 1752676414998
+      sortKey: -1752676412830
+      description: ""
+    children:
+      - url: "{{ _.base_url }}/api/login"
+        name: login
+        meta:
+          id: req_4fa6e1ffebe24815b1959863aade8aef
+          created: 1752671588153
+          modified: 1752676457767
+          isPrivate: false
+          description: ""
+          sortKey: -1752672457059
+        method: POST
+        body:
+          mimeType: application/json
+          text: |
+            {
+              "email": "johndoe@example.com",
+              "password": "password123"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.3.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.base_url }}/api/register"
+        name: register
+        meta:
+          id: req_a3f46420964c4c24bb1a4777ab56fe6b
+          created: 1752672467808
+          modified: 1752823755345
+          isPrivate: false
+          description: ""
+          sortKey: -1752672457009
+        method: POST
+        body:
+          mimeType: application/json
+          text: |
+            {
+              "name": "Markeplier",
+              "email": "wale@example.com",
+              "password": "password123",
+              "password_confirmation": "password123"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.3.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Post
+    meta:
+      id: fld_614ae02cf7da4ff89540a9f9c2b5c884
+      created: 1752676412730
+      modified: 1752680001008
+      sortKey: -1752676412805
+      description: ""
+    children:
+      - url: "{{base_url}}/api/posts/23"
+        name: show by id
+        meta:
+          id: req_5b2f27bc795f431ca7bb29bf23afefda
+          created: 1752676417318
+          modified: 1752681877885
+          isPrivate: false
+          description: ""
+          sortKey: -1752676417393
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.3.0
+        authentication:
+          type: bearer
+          token: "{{token}}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{base_url}}/api/posts"
+        name: create
+        meta:
+          id: req_f82473c2f4ca4fd6a28122f49c3007a8
+          created: 1752676490886
+          modified: 1752825525939
+          isPrivate: false
+          description: ""
+          sortKey: -1752676417380.5
+        method: POST
+        body:
+          mimeType: multipart/form-data
+          params:
+            - name: caption
+              value: lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod
+                tempor incididunt ut labore et
+              id: pair_9176b0b97fbf41a78721fff76e606e28
+            - id: pair_b8c08af2de364b33883d960d677158ef
+              name: image
+              value: ""
+              description: ""
+              disabled: false
+              type: file
+              fileName: C:\Users\rifky\Pictures\217673739_2913740098940150_2014514540508728616_n.jpg
+        headers:
+          - name: Content-Type
+            value: multipart/form-data
+            id: pair_9b70dfbc6e184b42a261d313e87851fb
+          - name: User-Agent
+            value: insomnia/11.3.0
+            id: pair_0e5c9a1d05114885a2dbebcfcf71f234
+          - id: pair_9e5410d28ba541779e48f12b25c62046
+            name: Authorization
+            value: Bearer {{ _.token }}
+            description: ""
+            disabled: true
+        authentication:
+          type: bearer
+          token: "{{ _.token }}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{base_url}}/api/posts/24"
+        name: delete by id
+        meta:
+          id: req_d6590a07f2c94beda7d8b087eb45a1f7
+          created: 1752679613025
+          modified: 1752679645598
+          isPrivate: false
+          description: ""
+          sortKey: -1752676417368
+        method: DELETE
+        headers:
+          - name: User-Agent
+            value: insomnia/11.3.0
+            id: pair_0e5c9a1d05114885a2dbebcfcf71f234
+          - id: pair_9e5410d28ba541779e48f12b25c62046
+            name: Authorization
+            value: Bearer {{ _.token }}
+            description: ""
+            disabled: true
+        authentication:
+          type: bearer
+          token: "{{ _.token }}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{base_url}}/api/posts"
+        name: show all
+        meta:
+          id: req_66a39f6b328a4dc9afe316c75a0be5cb
+          created: 1752679911668
+          modified: 1752823665497
+          isPrivate: false
+          description: ""
+          sortKey: -1752676417405.5
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.3.0
+        authentication:
+          type: bearer
+          token: "{{token}}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{base_url}}/api/posts/43"
+        name: update
+        meta:
+          id: req_62ed6869fe2a426eac7d4c30f3fc84c2
+          created: 1752681606591
+          modified: 1752844170494
+          isPrivate: false
+          description: ""
+          sortKey: -1752676417374.25
+        method: PUT
+        body:
+          mimeType: multipart/form-data
+          params:
+            - name: caption
+              value: Issdsni adssalah post pertama (edited)
+              id: pair_55e81aee0e1c47b4b4f769a0f9cfb641
+              disabled: false
+            - id: pair_fb7405a84c8742a99c5c040b827dddb5
+              name: image
+              value: ""
+              description: ""
+              disabled: false
+              type: file
+              fileName: C:\Users\rifky\Pictures\GHWVSZdWMAEBgoJ.jfif
+        headers:
+          - name: Content-Type
+            value: multipart/form-data
+          - name: User-Agent
+            value: insomnia/11.3.0
+            id: pair_0e5c9a1d05114885a2dbebcfcf71f234
+          - id: pair_9e5410d28ba541779e48f12b25c62046
+            name: Authorization
+            value: Bearer {{ _.token }}
+            description: ""
+            disabled: true
+        authentication:
+          type: bearer
+          token: "{{ _.token }}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Comment
+    meta:
+      id: fld_8085da13a4dd44ae8cbb97cf3d928953
+      created: 1752679985159
+      modified: 1752679997502
+      sortKey: -1752676412780
+      description: ""
+    children:
+      - url: "{{base_url}}/api/posts/23/comments/10"
+        name: show by id
+        meta:
+          id: req_3ce6a4ffab314bb28dc2c267a8c7708d
+          created: 1752679985161
+          modified: 1752681899154
+          isPrivate: false
+          description: ""
+          sortKey: -1752676417393
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.3.0
+        authentication:
+          type: bearer
+          token: "{{token}}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{base_url}}/api/posts/23/comments"
+        name: create
+        meta:
+          id: req_6ded6a3fb3f747ab821b3e37001a9885
+          created: 1752679985162
+          modified: 1752680342727
+          isPrivate: false
+          description: ""
+          sortKey: -1752676417380.5
+        method: POST
+        body:
+          mimeType: application/json
+          text: |
+            {
+              "content": "Lain kali post lagi ya bang"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.3.0
+            id: pair_0e5c9a1d05114885a2dbebcfcf71f234
+          - id: pair_9e5410d28ba541779e48f12b25c62046
+            name: Authorization
+            value: Bearer {{ _.token }}
+            description: ""
+            disabled: true
+        authentication:
+          type: bearer
+          token: "{{ _.token }}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{base_url}}/api/posts/23/comments/11"
+        name: delete by id
+        meta:
+          id: req_2f52732d22ef479a9b009a8f18efc282
+          created: 1752679985164
+          modified: 1752680799453
+          isPrivate: false
+          description: ""
+          sortKey: -1752676417368
+        method: DELETE
+        headers:
+          - name: User-Agent
+            value: insomnia/11.3.0
+            id: pair_0e5c9a1d05114885a2dbebcfcf71f234
+          - id: pair_9e5410d28ba541779e48f12b25c62046
+            name: Authorization
+            value: Bearer {{ _.token }}
+            description: ""
+            disabled: true
+        authentication:
+          type: bearer
+          token: "{{ _.token }}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{base_url}}/api/posts/23/comments"
+        name: show all
+        meta:
+          id: req_99d6ef81c35649d59a80b32917201e81
+          created: 1752679985166
+          modified: 1752680696552
+          isPrivate: false
+          description: ""
+          sortKey: -1752676417405.5
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.3.0
+        authentication:
+          type: bearer
+          token: "{{token}}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{base_url}}/api/posts/23/comments/37"
+        name: update
+        meta:
+          id: req_6fff4d6bca2746cbb678c976fafade9e
+          created: 1752680903467
+          modified: 1752843782342
+          isPrivate: false
+          description: ""
+          sortKey: -1752676417374.25
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |
+            {
+              "content": "Lain kali post lagi ya bang, semanxxgat22x"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.3.0
+            id: pair_0e5c9a1d05114885a2dbebcfcf71f234
+          - id: pair_9e5410d28ba541779e48f12b25c62046
+            name: Authorization
+            value: Bearer {{ _.token }}
+            description: ""
+            disabled: true
+        authentication:
+          type: bearer
+          token: "{{ _.token }}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Like
+    meta:
+      id: fld_a91ec96fd78a4a3f9465e5e1bf7665dd
+      created: 1752681825695
+      modified: 1752681825695
+      sortKey: -1750450959561
+      description: ""
+    children:
+      - url: "{{base_url}}/api/posts/23/likes/6"
+        name: show by id
+        meta:
+          id: req_bf54a9059ef547c3963b3d14d8d10f08
+          created: 1752681825697
+          modified: 1752682514788
+          isPrivate: false
+          description: ""
+          sortKey: -1752676417393
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.3.0
+        authentication:
+          type: bearer
+          token: "{{token}}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{base_url}}/api/posts/27/likes"
+        name: create
+        meta:
+          id: req_95d22f386e2045d4ba29806ab3f93e5d
+          created: 1752681825700
+          modified: 1752736771262
+          isPrivate: false
+          description: ""
+          sortKey: -1752676417380.5
+        method: POST
+        body:
+          mimeType: application/json
+          text: "{}"
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.3.0
+            id: pair_0e5c9a1d05114885a2dbebcfcf71f234
+          - id: pair_9e5410d28ba541779e48f12b25c62046
+            name: Authorization
+            value: Bearer {{ _.token }}
+            description: ""
+            disabled: true
+        authentication:
+          type: bearer
+          token: "{{ _.token }}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{base_url}}/api/posts/23/likes/6"
+        name: delete by id
+        meta:
+          id: req_fbb06485f71c4abbaaab586dd452e3c5
+          created: 1752681825701
+          modified: 1752682997993
+          isPrivate: false
+          description: ""
+          sortKey: -1752676417368
+        method: DELETE
+        headers:
+          - name: User-Agent
+            value: insomnia/11.3.0
+            id: pair_0e5c9a1d05114885a2dbebcfcf71f234
+          - id: pair_9e5410d28ba541779e48f12b25c62046
+            name: Authorization
+            value: Bearer {{ _.token }}
+            description: ""
+            disabled: true
+        authentication:
+          type: bearer
+          token: "{{ _.token }}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{base_url}}/api/posts/23/likes"
+        name: show all
+        meta:
+          id: req_c79e154097074a2daa2f2713d311bad7
+          created: 1752681825703
+          modified: 1752682265897
+          isPrivate: false
+          description: ""
+          sortKey: -1752676417405.5
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.3.0
+        authentication:
+          type: bearer
+          token: "{{token}}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{base_url}}/api/posts/23/likes/6"
+        name: update
+        meta:
+          id: req_a43427826c4f459e9a5c85c53e529f43
+          created: 1752681825705
+          modified: 1752682678016
+          isPrivate: false
+          description: ""
+          sortKey: -1752676417374.25
+        method: PUT
+        body:
+          mimeType: application/json
+          text: "{}"
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.3.0
+            id: pair_0e5c9a1d05114885a2dbebcfcf71f234
+          - id: pair_9e5410d28ba541779e48f12b25c62046
+            name: Authorization
+            value: Bearer {{ _.token }}
+            description: ""
+            disabled: true
+        authentication:
+          type: bearer
+          token: "{{ _.token }}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: User
+    meta:
+      id: fld_ea07db1bd0fc4a0b9f3f1e72029d4a1a
+      created: 1752731956505
+      modified: 1752731956505
+      sortKey: -1752731956505
+      description: ""
+    children:
+      - url: "{{base_url}}/api/users"
+        name: show all
+        meta:
+          id: req_edd6b7d822814482bac402f80ff7a296
+          created: 1752747390654
+          modified: 1752747409206
+          isPrivate: false
+          description: ""
+          sortKey: -1752747396401
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.3.0
+        authentication:
+          type: bearer
+          token: "{{token}}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_3365a0030dc250c1562bf19e360d8fa30a7aa876
+    created: 1752671377749
+    modified: 1752731986938
+  cookies:
+    - key: XSRF-TOKEN
+      value: eyJpdiI6Ikh2SFYya1VyRHJlcmV2dWtRcHprVkE9PSIsInZhbHVlIjoiNGx3Q2FabnNwTkh5YlBMN0VYQWpKaFFzZy9CdFhnQWVGSlp0Z0JaQ3YxWVJuSlBkR0FKWDNrV2Y2VFhHTkxHZWJLc1o4aUVHVkZhMmtxcWo4WjlnT3R2cjVzcjZlaVo5ejV4VWttV3hVOEE3bjFSVHhHUWJqN3RHWFZodklFMEQiLCJtYWMiOiI1NjVlZDFlZjFhY2I1ZjE4NjEwMGRkZjQ0YzVlNGVhODQyYjFkNmE5NmUyOGUzOGUzNDFlN2ZlZmQ0Y2JlMzgzIiwidGFnIjoiIn0%3D
+      maxAge: 7200
+      domain: 127.0.0.1
+      path: /
+      hostOnly: true
+      creation: 2025-07-16T13:21:03.654Z
+      lastAccessed: 2025-07-17T05:59:46.938Z
+      sameSite: lax
+      id: e6b529e2-524a-4036-b1e3-8a29afd55dfe
+    - key: laravel_session
+      value: eyJpdiI6ImdCSlJHZEdqbjZtaXNseGRQYlV4TGc9PSIsInZhbHVlIjoiOVdtOUI4Z0t0ci9lOVdrMmZKbktnRkhoMUcyU0o0dUxtUlkvd2VaR3Z6eTRWL090L1ROa1dacUY2bUhnc1Z5WlNXU29qK2l0b0dnZW96dE4wRS9hblVlTHFVaEF1b3MyeWs3NEp2a1poY2tUVjVNQ1FsVVJXbWRTN01mWnBLOXIiLCJtYWMiOiJjMmI3NTkxZmYwZjc0ZDZhMDNkZjIyYWU2MzliM2Q5NjhjMTgxNGM1Yjk5ZjhmZjJjZjUyOTFlNmEzODFhNzAzIiwidGFnIjoiIn0%3D
+      maxAge: 7200
+      domain: 127.0.0.1
+      path: /
+      httpOnly: true
+      hostOnly: true
+      creation: 2025-07-16T13:21:03.655Z
+      lastAccessed: 2025-07-17T05:59:46.938Z
+      sameSite: lax
+      id: e1d4d09f-4d89-4277-bb7e-b4a9a9164252
+environments:
+  name: Base Environment
+  meta:
+    id: env_3365a0030dc250c1562bf19e360d8fa30a7aa876
+    created: 1752671377745
+    modified: 1752831827392
+    isPrivate: false
+  data:
+    base_url: http://127.0.0.1:8000
+    token: 22|qNx3Gty7bCFSmYV8HOxpgg9pMD1KrJM152SosgAs6e2b115a
