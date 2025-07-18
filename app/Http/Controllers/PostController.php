@@ -16,8 +16,33 @@ class PostController extends Controller
      */
     public function index()
     {
-        return Post::with('user', 'likes', 'comments')->latest()->get();
+        $posts = Post::with('user', 'comments')
+            ->withCount('likes') // <= ini menghitung jumlah like per post
+            ->latest()
+            ->get();
+
+        $data = $posts->map(fn($post) => [
+            'id' => $post->id,
+            'caption' => $post->caption,
+            'image_path' => $post->image_path && Storage::disk('public')->exists($post->image_path)
+                ? request()->getSchemeAndHttpHost() . '/api/image/' . $post->image_path
+                : 'https://placehold.co/470x600',
+            'user' => $post->user->only(['id', 'name', 'username']),
+            'likes_count' => $post->likes_count, // langsung pakai dari withCount
+            // 'is_liked' => Auth::check() ? $post->likes()->where('user_id', Auth::id())->exists() : false,
+            'comments_count' => $post->comments->count(),
+            'comments' => $post->comments->map(fn($comment) => [
+                'id' => $comment->id,
+                'content' => $comment->content,
+                'user' => $comment->user->only(['id', 'name', 'username']),
+                'created_at' => $comment->created_at,
+            ]),
+            'created_at' => $post->created_at,
+        ]);
+
+        return response()->json($data);
     }
+
 
     /**
      * Store a newly created resource in storage.

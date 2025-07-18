@@ -17,8 +17,9 @@ class Post extends Model
     protected $fillable = [
         'user_id', // Pastikan user_id ada di fillable jika kamu menggunakannya
         'title',
-        'content',
+        'caption',
         'image_path'
+
     ];
 
     /**
