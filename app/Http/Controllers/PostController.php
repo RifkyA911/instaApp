@@ -37,6 +37,10 @@ class PostController extends Controller
                 'user' => $comment->user->only(['id', 'name', 'username']),
                 'created_at' => $comment->created_at,
             ]),
+            'likes' => $post->likes->map(fn($like) => [
+                'id' => $like->id,
+                'user' => $like->user->only(['id', 'name', 'username']),
+            ]),
             'created_at' => $post->created_at,
         ]);
 
