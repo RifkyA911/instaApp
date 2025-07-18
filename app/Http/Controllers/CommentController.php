@@ -41,7 +41,7 @@ class CommentController extends Controller
 
         return response()->json([
             'message' => 'Comment added',
-            'data' => $comment
+            'data' => $comment->load('user')
         ], 201);
     }
 
@@ -75,7 +75,7 @@ class CommentController extends Controller
 
         return response()->json([
             'message' => 'Comment updated',
-            'data' => $comment
+            'data' => $comment->load('user')
         ]);
     }
 
