@@ -17,9 +17,9 @@
 **Insta App Copycat** is a modern RESTful API built with **Laravel 12** designed to mimic Instagram’s core functionalities.  
 Easily manage **Users**, **Posts**, **Comments**, **Likes**, and **Followers** — all with **authentication**, **authorization**, and **pagination** baked in.
 
-🎬 **Project demo video:** [Watch on Google Drive](https://drive.google.com/)
+🎬 **Project demo video:** [Watch on Google Drive](https://drive.google.com/file/d/1Zp0r4YnZ6ocAg4a-LJgmS7iRPu2HAnrZ/view?usp=sharing)
 
-Frontend repo: [instaApp-Frontend](https://github.com/RifkyA911/instaApp-Frontend)
+👷 **Frontend repo:** [instaApp-Frontend](https://github.com/RifkyA911/instaApp-Frontend)
 
 ---
 
@@ -53,6 +53,8 @@ Frontend repo: [instaApp-Frontend](https://github.com/RifkyA911/instaApp-Fronten
 ---
 
 ## 📡 API Routes
+
+⚠️ Import Insomnia workspace from `/import/instaApp.json` for testing.
 
 ### User Routes
 
@@ -100,8 +102,6 @@ php artisan migrate
 # 4. Start the server
 php artisan serve
 ```
-
-Import Insomnia workspace from `/import/import.json` for testing.
 
 ---
 
