@@ -88,32 +88,57 @@ class PostController extends Controller
     public function update(Request $request, Post $post)
     {
         $request->validate([
-            'caption' => 'nullable|string|max:500',
+            'caption' => 'nullable|string',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
+        // return response()->json($request->all());
+
 
         if ($post->user_id !== Auth::id()) {
             return response()->json(['message' => 'Forbidden'], 403);
         }
 
-        // Simpan log sebelum update
-        PostEditLog::create([
-            'post_id' => $post->id,
-            'user_id' => Auth::id(),
-            'old_caption' => $post->caption,
-            'new_caption' => $request->input('caption'),
-            'edited_at' => now(),
-        ]);
+        $oldImagePath = $post->image_path;
 
+
+        if ($request->hasFile('image')) {
+            if (!$request->file('image')->isValid()) {
+                return response()->json(['message' => 'Invalid image file'], 400);
+            }
+
+            // Hapus file lama jika ada
+            if ($oldImagePath && Storage::disk('public')->exists($oldImagePath)) {
+                Storage::disk('public')->delete($oldImagePath);
+            }
+
+            // Simpan file baru
+            $newPath = $request->file('image')->store('posts', 'public');
+            $post->image_path = $newPath;
+        }
+
+        // Simpan log sebelum update
+        // PostEditLog::create([
+        //     'post_id' => $post->id,
+        //     'user_id' => Auth::id(),
+        //     'old_caption' => $post->caption,
+        //     'new_caption' => $request->input('caption'),
+        //     'edited_at' => now(),
+        // ]);
+
+        // Update caption dan image_path (kalau ada yang baru)
         $post->update([
             'caption' => $request->input('caption'),
-            'is_edited' => true, // kalau kamu juga pakai is_edited di posts
+            'image_path' => $post->image_path,
+            'is_edited' => true,
+            'updated_at' => now(),
         ]);
 
         return response()->json([
             'message' => 'Post updated',
-            'data' => $post
+            'data' => $post,
         ]);
     }
+
 
     // Hapus post milik sendiri
     public function destroy(Post $post)
