@@ -71,6 +71,7 @@ class CommentController extends Controller
         $comment->update([
             'content' => $request->input('content'),
             'is_edited' => true,
+            'updated_at' => now(),
         ]);
 
         return response()->json([
